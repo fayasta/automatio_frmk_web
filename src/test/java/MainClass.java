@@ -2,11 +2,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.AuthenticationPage;
+import pages.CreateAccount;
+import pages.NavigationPage;
 
 public class MainClass {
 
-    //private static String basePath = System.getProperty("user.dir");
-    //private static String driverFolderPath = "/src/test/resources/drivers/";
     public static void main(String[] args){
 
         openChromeBrowser();
@@ -23,8 +24,11 @@ public class MainClass {
         // WebDriver driver = setCapabilities();
 
         driver.get("http://automationpractice.com/index.php");
-        StorePage storePage = new StorePage();
-        storePage.loginStorePage(driver);
+
+        NavigationPage navigationPage = new NavigationPage(driver);
+        AuthenticationPage authenticationPage = navigationPage.clickOnSignIn();
+        CreateAccount createAccount = authenticationPage.completeRegistration();
+        createAccount.completeAccountForm();
 
     }
 
