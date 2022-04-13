@@ -3,6 +3,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pages.AuthenticationPage;
+import pages.CreateAccountPage;
+import pages.NavigationPage;
 
 public class MainClass {
 
@@ -18,8 +21,15 @@ public class MainClass {
         driver.manage().window().maximize();
         driver.get("http://automationpractice.com/index.php");
 
-        StorePage storePage = new StorePage();
-        storePage.loginStorePage(driver);
+        NavigationPage navigationPage = new NavigationPage(driver);
+        navigationPage.clickOnSignIn();
+
+        AuthenticationPage authenticationPage = navigationPage.clickOnSignIn();
+
+        CreateAccountPage createAccountPage = authenticationPage.completeRegistration();
+
+        createAccountPage.completeAccountForm();
+
     }
 
     public static WebDriver setCapabilities(){
