@@ -10,6 +10,9 @@ public class NavigationPage extends BasePage {
     @FindBy(css = "a.login")
     private WebElement signInButton;
 
+    @FindBy(css = "a.account")
+    private WebElement userName;
+
     public NavigationPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -19,5 +22,9 @@ public class NavigationPage extends BasePage {
         //Sign In Page
         signInButton.click();
         return new AuthenticationPage(driver);
+    }
+
+    public String getUserName(){
+        return userName.getText();
     }
 }

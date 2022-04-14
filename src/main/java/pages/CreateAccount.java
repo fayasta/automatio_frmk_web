@@ -97,10 +97,10 @@ public class CreateAccount extends BasePage{
        dob_year1.selectByIndex(39);
 
        firstname.click();
-       firstname.sendKeys("addressFName");
+       firstname.sendKeys("testFName");
 
        lastname.click();
-       lastname.sendKeys("addressLName");
+       lastname.sendKeys("testLName");
 
        company.click();
        company.sendKeys("testCompany");
@@ -135,4 +135,6 @@ public class CreateAccount extends BasePage{
        submitAccount.click();
 
     }
+
+
 }
